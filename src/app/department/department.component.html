@@ -1,0 +1,49 @@
+<div class="card mt-4">
+  <h4 class="card-header">Welcome {{name}}</h4>
+  <div class="card-body">
+    <h6>View Departments</h6>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="depts">
+      <li *ngFor="let dept of depts">
+        Department Name: {{dept.dept_name}}
+        Budget: {{dept.budget}}
+        Building: {{dept.building}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf = "name == 'admin'" style="width: 400px; margin: auto;">
+    <form [formGroup]="deptForm" (ngSubmit)="onSubmit()"  class="text-center border border-light p-5">
+      <p class="h4 mb-4">Create New Department</p>
+      <div class="form-group">
+        <input type="text" formControlName="dept_name" placeholder="Department Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dept_name.errors }" />
+        <div *ngIf="submitted && f.dept_name.errors" class="invalid-feedback">
+          <div *ngIf="f.dept_name.errors.required">Department Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="building" placeholder="Building" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.building.errors }" />
+        <div *ngIf="submitted && f.building.errors" class="invalid-feedback">
+          <div *ngIf="f.building.errors.required">Building is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="number" formControlName="budget" placeholder="Budget" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.budget.errors }" />
+        <div *ngIf="submitted && f.budget.errors" class="invalid-feedback">
+          <div *ngIf="f.budget.errors.required">Budget is required</div>
+        </div>
+      </div>
+      <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
+    </form>
+    <br>
+    <br>
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+
+  </div>
+
+
+  </div>

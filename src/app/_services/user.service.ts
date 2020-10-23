@@ -19,14 +19,9 @@ export class UserService {
 
 
 
-  public sendGetRequest(){
-    return this.http.get(this.usersUrl);
-  }
-
-  // public createNewUser(){
-  //
-  // }
-
+    public sendGetRequest(){
+      return this.http.get(this.usersUrl);
+    }
     getUsers() {
       return this.http.get<any>( this.usersUrl )
         .pipe(map((res: Response) => res.json()));

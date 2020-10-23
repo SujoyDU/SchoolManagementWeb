@@ -31,12 +31,13 @@ export class NewUser{
 
 }
 
-
-
-
-
-
-
+export class Teacher {
+  uid: string;
+  tid: string;
+  dept_name: string;
+  designation: string;
+  salary: string;
+}
 
 export class Department {
   dept_name: string;
