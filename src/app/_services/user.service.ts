@@ -13,6 +13,7 @@ export class UserService {
     // httpOptions = {
     //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     // };
+
     constructor(private http: HttpClient,
                 private messageService: MessageService) { }
 
@@ -22,12 +23,26 @@ export class UserService {
     return this.http.get(this.usersUrl);
   }
 
+  // public createNewUser(){
+  //
+  // }
+
     getUsers() {
       return this.http.get<any>( this.usersUrl )
         .pipe(map((res: Response) => res.json()));
     }
 
-    private handleError<T>(operation = 'operation', result?: T) {
+    createUser(first_name:string, last_name: string, email: string, password: string, profile:string[]) {
+      return this.http.post<any>(`${environment.apiUrl}/api/users/`, { email, password, first_name, last_name, profile })
+        .pipe(map(response => {
+          console.log(response);
+          return response;
+        }));
+
+    }
+
+
+  private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
 
         // TODO: send the error to remote logging infrastructure
