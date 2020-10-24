@@ -39,6 +39,11 @@ export class Teacher {
   salary: string;
 }
 
+export class Student{
+  uid: string;
+  sid: string;
+  dept_name: string;
+}
 export class Department {
   dept_name: string;
   building: string;

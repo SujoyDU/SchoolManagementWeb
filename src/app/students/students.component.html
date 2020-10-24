@@ -1,1 +1,60 @@
-<p>students works!</p>
+<div class="card mt-4">
+  <h4 class="card-header">Welcome {{name}}</h4>
+  <div class="card-body">
+    <h6>View Students</h6>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="students">
+      <li *ngFor="let student of students">
+        Student Uid: {{student.uid}}
+        Department: {{student.dept_name}}
+        Student ID : {{student.sid}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf = "name == 'admin'" style="width: 400px; margin: auto;">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()"  class="text-center border border-light p-5">
+      <p class="h4 mb-4">Create New Student Account</p>
+      <!--      <div class="form-group">-->
+      <!--        <input type="text" formControlName="uid" placeholder="User ID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.uid.errors }" />-->
+      <!--        <div *ngIf="submitted && f.uid.errors" class="invalid-feedback">-->
+      <!--          <div *ngIf="f.uid.errors.required">User ID is required</div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+
+      <div class="form-group">
+        <label for="type">Select User ID:</label>
+        <select class="form-control" formControlName="uid" id="type">
+          <option *ngFor="let uid of uids;">
+            {{uid}}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="sid" placeholder="Student ID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sid.errors }" />
+        <div *ngIf="submitted && f.sid.errors" class="invalid-feedback">
+          <div *ngIf="f.sid.errors.required">Student ID required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dept_type">Select Department:</label>
+        <select class="form-control" formControlName="dept_name" id="dept_type">
+          <option *ngFor="let dept of deptNames;">
+            {{dept}}
+          </option>
+        </select>
+      </div>
+      <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
+    </form>
+    <br>
+    <br>
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+
+  </div>
+
+
+</div>
