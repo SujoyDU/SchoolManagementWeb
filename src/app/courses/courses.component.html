@@ -1,1 +1,62 @@
-<p>courses works!</p>
+<div class="card mt-4">
+  <h4 class="card-header">Welcome {{name}}</h4>
+  <div class="card-body">
+    <h6>View Courses</h6>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="courses">
+      <li *ngFor="let course of courses">
+        Course ID: {{course.course_id}}
+        Course Name: {{course.course_name}}
+        Depatment : {{course.dept_name}}
+        Credits: {{course.credits}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf = "name == 'admin'" style="width: 400px; margin: auto;">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()"  class="text-center border border-light p-5">
+      <p class="h4 mb-4">Create New Course</p>
+
+      <div class="form-group">
+        <input type="text" formControlName="course_id" placeholder="Course ID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.course_id.errors }" />
+        <div *ngIf="submitted && f.course_id.errors" class="invalid-feedback">
+          <div *ngIf="f.course_id.errors.required">Course ID is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="course_name" placeholder="Course Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.course_name.errors }" />
+        <div *ngIf="submitted && f.course_name.errors" class="invalid-feedback">
+          <div *ngIf="f.course_name.errors.required">Course Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dept_type">Select Department:</label>
+        <select class="form-control" formControlName="dept_name" id="dept_type">
+          <option *ngFor="let dept of deptNames;">
+            {{dept}}
+          </option>
+        </select>
+      </div>
+
+
+
+      <div class="form-group">
+        <input type="number" formControlName="credits" placeholder="Credits" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.credits.errors }" />
+        <div *ngIf="submitted && f.credits.errors" class="invalid-feedback">
+          <div *ngIf="f.credits.errors.required">Credit is required</div>
+        </div>
+      </div>
+      <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
+    </form>
+    <br>
+    <br>
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+
+  </div>
+
+
+</div>

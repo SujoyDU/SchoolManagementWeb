@@ -8,6 +8,7 @@ import {UserComponent} from '@app/user/user.component';
 import {DepartmentComponent} from '@app/department';
 import {TeachersComponent} from '@app/teachers';
 import {StudentsComponent} from '@app/students/students.component';
+import {CoursesComponent} from '@app/courses/courses.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'departments', component: DepartmentComponent, canActivate: [AuthGuard]},
     { path: 'teachers', component: TeachersComponent, canActivate: [AuthGuard]},
     { path: 'students', component: StudentsComponent, canActivate: [AuthGuard]},
+    { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard]},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

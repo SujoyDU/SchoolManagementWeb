@@ -8,26 +8,23 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from '@app/_services/message.service';
 
 @Injectable({ providedIn: 'root' })
-export class DepartmentService {
-  private  deptUrl = 'http://localhost:8000/api/department/';
+export class CourseService {
+  private  courseUrl = 'http://localhost:8000/api/course/';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) { }
 
   public sendGetRequest(){
-    return this.http.get(this.deptUrl);
+    return this.http.get(this.courseUrl);
   }
 
-  getDeptID(){
-    return this.http.get<any>( this.deptUrl )
+  getUsers() {
+    return this.http.get<any>( this.courseUrl )
+      .pipe(map((res: Response) => res.json()));
   }
-  // getUsers() {
-  //   return this.http.get<any>( this.deptUrl )
-  //     .pipe(map((res: Response) => res.json()));
-  // }
 
-  createDepartment(dept_name:string, building: string, budget: string, courses:any, instructors:any, deptstudents:any) {
-    return this.http.post<any>(this.deptUrl, { dept_name, building,budget })
+  createCourse(course_id:string, course_name: string, dept_name: string, credits:string) {
+    return this.http.post<any>(this.courseUrl, { course_id, course_name, dept_name,credits })
       .pipe(map(response => {
         console.log(response);
         return response;

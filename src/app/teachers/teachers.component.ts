@@ -19,7 +19,10 @@ export class TeachersComponent implements OnInit {
   name: string;
   uids:Array<string>;
   deptNames:Array<string>;
-  deptUrl = 'http://localhost:8000/api/department/'
+  deptUrl = 'http://localhost:8000/api/department/';
+  userUrl = 'http://localhost:8000/api/users/'
+  submitUser: string;
+  submitDept: string;
   submitted = false;
   teacherForm: FormGroup;
 
@@ -31,6 +34,8 @@ export class TeachersComponent implements OnInit {
               private http: HttpClient) {
     this.uids =[];
     this.deptNames =[];
+    this.submitUser = this.userUrl;
+    this.submitDept = this.deptUrl;
   }
 
   // "uid": null,
@@ -61,8 +66,10 @@ export class TeachersComponent implements OnInit {
       console.log(data);
       data.forEach(e => {
         if(e.first_name!='admin')
-          if(e.profile['user_type'] == 'T')
+          if(e.profile['user_type'] == 'T') {
+            e.url = decodeURI(e.url.split(this.userUrl)[1]).split('/')[0];
             this.uids.push(e.url)
+          }
       })
 
       // this.users = data;
@@ -75,8 +82,8 @@ export class TeachersComponent implements OnInit {
       //this.loading = false;
       console.log(data);
       data.forEach(e => {
-        e.dept_name = this.deptUrl+e.dept_name+'/';
-        this.deptNames.push(e.dept_name)
+        //e.dept_name = this.deptUrl+e.dept_name+'/';
+        this.deptNames.push(decodeURI(e.dept_name))
       })
       // this.depts = data;
       // console.log(this.depts)
@@ -87,6 +94,10 @@ export class TeachersComponent implements OnInit {
     this.teacherService.sendGetRequest().subscribe((data: any[]) => {
       this.loading = false;
       console.log(data);
+      data.forEach( d =>{
+        d.dept_name = decodeURI(d.dept_name.split(this.deptUrl)[1]).split('/')[0];
+        d.uid = decodeURI(d.uid.split(this.userUrl)[1]).split('/')[0];
+      })
       this.teachers = data;
       console.log(this.teachers)
     })
@@ -101,8 +112,9 @@ export class TeachersComponent implements OnInit {
       return;
     }
 
-
-    this.teacherService.createTeacher(this.f.uid.value, this.f.tid.value, this.f.dept_name.value, this.f.designation.value, this.f.salary.value)
+    this.submitUser = encodeURI(this.submitUser+this.f.uid.value+'/');
+    this.submitDept = encodeURI(this.submitDept+this.f.dept_name.value+'/');
+    this.teacherService.createTeacher(this.submitUser, this.f.tid.value, this.submitDept, this.f.designation.value, this.f.salary.value)
       .subscribe({
         next: (data: any[]) => {
           // get return url from route parameters or default to '/'

@@ -21,6 +21,10 @@ export class StudentsComponent implements OnInit {
   submitted = false;
   studentForm: FormGroup;
   deptUrl = 'http://localhost:8000/api/department/'
+  userUrl = 'http://localhost:8000/api/users/'
+  submitUser: string;
+  submitDept: string;
+
   constructor(private studentService: StudentService,
               private userService: UserService,
               private deptService: DepartmentService,
@@ -29,6 +33,8 @@ export class StudentsComponent implements OnInit {
               private http: HttpClient) {
     this.uids =[];
     this.deptNames =[];
+    this.submitUser = this.userUrl;
+    this.submitDept = this.deptUrl;
   }
 
   ngOnInit(): void {
@@ -51,8 +57,10 @@ export class StudentsComponent implements OnInit {
       console.log(data);
       data.forEach(e => {
         if(e.first_name!='admin')
-          if(e.profile['user_type'] == 'S')
+          if(e.profile['user_type'] == 'S'){
+            e.url = decodeURI(e.url.split(this.userUrl)[1]).split('/')[0];
             this.uids.push(e.url)
+          }
       })
 
       // this.users = data;
@@ -65,8 +73,8 @@ export class StudentsComponent implements OnInit {
       //this.loading = false;
       console.log(data);
       data.forEach(e => {
-        e.dept_name = this.deptUrl+e.dept_name+'/';
-        this.deptNames.push(e.dept_name)
+        //e.dept_name = this.deptUrl+e.dept_name+'/';
+        this.deptNames.push(decodeURI(e.dept_name))
       })
       // this.depts = data;
       // console.log(this.depts)
@@ -77,6 +85,10 @@ export class StudentsComponent implements OnInit {
     this.studentService.sendGetRequest().subscribe((data: any[]) => {
       this.loading = false;
       console.log(data);
+      data.forEach( d =>{
+        d.dept_name = decodeURI(d.dept_name.split(this.deptUrl)[1]).split('/')[0];
+        d.uid = decodeURI(d.uid.split(this.userUrl)[1]).split('/')[0];
+      })
       this.students = data;
       console.log(this.students)
     })
@@ -91,8 +103,10 @@ export class StudentsComponent implements OnInit {
       return;
     }
 
+    this.submitUser = encodeURI(this.submitUser+this.f.uid.value+'/');
+    this.submitDept = encodeURI(this.submitDept+this.f.dept_name.value+'/');
 
-    this.studentService.createStudent(this.f.uid.value, this.f.sid.value, this.f.dept_name.value)
+    this.studentService.createStudent(this.submitUser, this.f.sid.value, this.submitDept)
       .subscribe({
         next: (data: any[]) => {
           // get return url from route parameters or default to '/'

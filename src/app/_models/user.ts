@@ -43,9 +43,17 @@ export class Student{
   uid: string;
   sid: string;
   dept_name: string;
+  total_credit: number;
 }
 export class Department {
   dept_name: string;
   building: string;
   budget: string;
+}
+
+export class Course {
+  course_id: string;
+  course_name: string;
+  dept_name: string;
+  credits: number;
 }

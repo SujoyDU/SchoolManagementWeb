@@ -16,6 +16,7 @@ import { UserComponent } from './user/user.component'
 import {DepartmentComponent} from '@app/department';
 import {TeachersComponent} from '@app/teachers/teachers.component';
 import {StudentsComponent} from '@app/students/students.component';
+import {CoursesComponent} from '@app/courses/courses.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import {StudentsComponent} from '@app/students/students.component';
         UserComponent,
         DepartmentComponent,
         TeachersComponent,
-        StudentsComponent
+        StudentsComponent,
+        CoursesComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
