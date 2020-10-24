@@ -1,1 +1,63 @@
-<p>section works!</p>
+<div class="card mt-4">
+  <h4 class="card-header">Welcome {{name}}</h4>
+  <div class="card-body">
+    <h6>View Sections</h6>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="sections">
+      <li *ngFor="let section of sections">
+        Section ID: {{section.sec_id}}
+        Semester : {{section.semester}}
+        Year: {{section.year}}
+        Course: {{section.course_id}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf = "name == 'admin'" style="width: 400px; margin: auto;">
+    <form [formGroup]="sectionForm" (ngSubmit)="onSubmit()"  class="text-center border border-light p-5">
+      <p class="h4 mb-4">Create New Section</p>
+
+      <div class="form-group">
+        <input type="text" formControlName="sec_id" placeholder="Section ID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sec_id.errors }" />
+        <div *ngIf="submitted && f.sec_id.errors" class="invalid-feedback">
+          <div *ngIf="f.sec_id.errors.required">Section ID is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="semester">Select Semester:</label>
+        <select class="form-control" formControlName="semester" id="semester">
+          <option value="Fa">Fall</option>
+          <option value="Wi">Winter</option>
+          <option value="Su">Summer</option>
+          <option value="Sp">Spring</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="date" formControlName="year" placeholder="Year" class="form-control" />
+      </div>
+
+
+      <div class="form-group">
+        <label for="course_id">Select Course:</label>
+        <select class="form-control" formControlName="course_id" id="course_id">
+          <option *ngFor="let course_id of courseIds;">
+            {{course_id}}
+          </option>
+        </select>
+      </div>
+      <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
+    </form>
+    <br>
+    <br>
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+
+  </div>
+
+
+
+
+</div>

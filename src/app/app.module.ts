@@ -12,11 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
-import { UserComponent } from './user/user.component'
-import {DepartmentComponent} from '@app/department';
-import {TeachersComponent} from '@app/teachers/teachers.component';
-import {StudentsComponent} from '@app/students/students.component';
-import {CoursesComponent} from '@app/courses/courses.component';
+import {UserComponent} from './user/user.component';
+import {DepartmentComponent} from './department/department.component';
+import {TeachersComponent} from './teachers/teachers.component';
+import {StudentsComponent} from './students/students.component';
+import {CoursesComponent} from './courses/courses.component';
+import {SectionComponent} from './section/section.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import {CoursesComponent} from '@app/courses/courses.component';
         DepartmentComponent,
         TeachersComponent,
         StudentsComponent,
-        CoursesComponent
+        CoursesComponent,
+        SectionComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

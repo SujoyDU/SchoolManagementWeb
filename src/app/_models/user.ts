@@ -57,3 +57,11 @@ export class Course {
   dept_name: string;
   credits: number;
 }
+
+export class Section {
+  url: string;
+  sec_id: string;
+  semester:string;
+  year: string;
+  course_id: string;
+}

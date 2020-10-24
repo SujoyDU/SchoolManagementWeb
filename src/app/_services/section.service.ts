@@ -1,33 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {MessageService} from '@app/_services/message.service';
+import {map} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 
-import { environment } from '@environments/environment';
-import { User, Department } from '@app/_models';
-import {Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { MessageService } from '@app/_services/message.service';
-
-@Injectable({ providedIn: 'root' })
-export class CourseService {
-  private  courseUrl = 'http://localhost:8000/api/course/';
+@Injectable({
+  providedIn: 'root'
+})
+export class SectionService {
+  private  sectionUrl = 'http://localhost:8000/api/section/';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) { }
 
   public sendGetRequest(){
-    return this.http.get(this.courseUrl);
+    return this.http.get(this.sectionUrl);
   }
 
-  createCourse(course_id:string, course_name: string, dept_name: string, credits:string) {
-    return this.http.post<any>(this.courseUrl, { course_id, course_name, dept_name,credits })
+  createSection(sec_id:string, semester: string, year: string, course_id:string) {
+    return this.http.post<any>(this.sectionUrl, { sec_id, semester, year,course_id })
       .pipe(map(response => {
         console.log(response);
         return response;
       }));
 
-  }
-  getCourseID(){
-    return this.http.get<any>( this.courseUrl )
   }
 
 
@@ -47,5 +43,4 @@ export class CourseService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
-
 }
