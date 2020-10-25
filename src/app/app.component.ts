@@ -7,11 +7,14 @@ import { LoggedInUser,User } from './_models';
 @Component({ selector: 'app-root', templateUrl: 'app.component.html' })
 export class AppComponent {
     currentUser: LoggedInUser;
+    currentUserId: string;
+
 
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      // this.authenticationService.getId
     }
 
     logout() {

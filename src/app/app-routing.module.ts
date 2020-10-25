@@ -10,6 +10,9 @@ import {TeachersComponent} from './teachers/teachers.component';
 import {StudentsComponent} from './students/students.component';
 import {CoursesComponent} from './courses/courses.component';
 import {SectionComponent} from './section/section.component';
+import {TeachesComponent} from './teaches/teaches.component';
+import {TeachersDetailComponent} from '@app/teachers-detail/teachers-detail.component';
+import {SectionDetailComponent} from '@app/section-detail/section-detail.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -17,9 +20,12 @@ const routes: Routes = [
     { path: 'users', component: UserComponent, canActivate: [AuthGuard] },
     { path: 'departments', component: DepartmentComponent, canActivate: [AuthGuard]},
     { path: 'teachers', component: TeachersComponent, canActivate: [AuthGuard]},
+    { path: 'teachers/:id', component: TeachersDetailComponent, canActivate: [AuthGuard]},
     { path: 'students', component: StudentsComponent, canActivate: [AuthGuard]},
     { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard]},
     { path: 'section', component: SectionComponent, canActivate: [AuthGuard]},
+    { path: 'section/:id', component: SectionDetailComponent, canActivate: [AuthGuard]},
+    { path: 'teaches', component: TeachesComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

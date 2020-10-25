@@ -65,3 +65,30 @@ export class Section {
   year: string;
   course_id: string;
 }
+
+export interface StudentList {
+  sid: string;
+}
+
+export interface TeacherInfo {
+  tid: string;
+  full_name: string;
+}
+
+export interface SectionInfo {
+  sec_id: string;
+  course_id: string;
+}
+
+export class TeachesDetail{
+  teacherInfo: TeacherInfo;
+  sectionInfo: SectionInfo;
+  studentList: StudentList[];
+}
+
+export class Teaches {
+  tid: string;
+  teachcourse: string;
+  studentList : StudentList[];
+}
+

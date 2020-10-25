@@ -17,6 +17,10 @@ export class SectionService {
     return this.http.get(this.sectionUrl);
   }
 
+  public sendGetRequestById(id){
+    return this.http.get(this.sectionUrl+id+'/');
+  }
+
   createSection(sec_id:string, semester: string, year: string, course_id:string) {
     return this.http.post<any>(this.sectionUrl, { sec_id, semester, year,course_id })
       .pipe(map(response => {

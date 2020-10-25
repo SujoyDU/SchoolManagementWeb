@@ -17,8 +17,12 @@ import {DepartmentComponent} from './department/department.component';
 import {TeachersComponent} from './teachers/teachers.component';
 import {StudentsComponent} from './students/students.component';
 import {CoursesComponent} from './courses/courses.component';
-import {SectionComponent} from './section/section.component';
-
+import {SectionComponent} from './section/section.component';;
+import { TeachesComponent } from './teaches/teaches.component';
+import { ExamComponent } from './exam/exam.component';
+import { MarkexamComponent } from './markexam/markexam.component';
+import { TeachersDetailComponent } from './teachers-detail/teachers-detail.component';
+import { SectionDetailComponent } from './section-detail/section-detail.component'
 @NgModule({
   imports: [
     BrowserModule,
@@ -37,7 +41,12 @@ import {SectionComponent} from './section/section.component';
         TeachersComponent,
         StudentsComponent,
         CoursesComponent,
-        SectionComponent
+        SectionComponent,
+        TeachesComponent ,
+        ExamComponent ,
+        MarkexamComponent ,
+        TeachersDetailComponent,
+        SectionDetailComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

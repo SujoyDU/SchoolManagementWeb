@@ -10,6 +10,7 @@ import {LoggedInUser, User} from '@app/_models';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<LoggedInUser>;
     public currentUser: Observable<LoggedInUser>;
+    private loggedIn = false;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<LoggedInUser>(JSON.parse(localStorage.getItem('currentUser')));
@@ -25,9 +26,17 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
+                this.loggedIn = true;
                 this.currentUserSubject.next(user);
                 return user;
             }));
+    }
+
+    getId() {
+      if(this.loggedIn){
+        return
+      }
+
     }
 
     logout() {

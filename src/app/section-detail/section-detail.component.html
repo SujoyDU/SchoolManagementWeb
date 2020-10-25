@@ -1,0 +1,14 @@
+<div class="card mt-4">
+  <h4 class="card-header">Welcome {{name}}</h4>
+  <div class="card-body">
+    <h6>View Section Detail</h6>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="section">
+        Section ID: {{section.sec_id}}
+        Semester : {{section.semester}}
+        Year: {{section.year}}
+        Course: {{section.course_id}}
+    </ul>
+    <button (click)="goBack()">go back</button>
+  </div>
+</div>

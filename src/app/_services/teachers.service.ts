@@ -20,6 +20,11 @@ export class TeachersService {
     return this.http.get(this.teacherUrl);
   }
 
+  public sendGetRequestbyId(id){
+    return this.http.get(this.teacherUrl+id+'/');
+  }
+
+
 
   createTeacher(uid:string, tid: string, dept_name: string, designation:string, salary:string) {
     return this.http.post<any>(this.teacherUrl, { uid, tid,dept_name,designation,salary})

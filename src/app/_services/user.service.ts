@@ -22,6 +22,11 @@ export class UserService {
     public sendGetRequest(){
       return this.http.get(this.usersUrl);
     }
+
+    public sendGetRequestbyID(id): Observable<Object>{
+      return this.http.get(this.usersUrl+id+'/');
+    }
+
     getUsers() {
       return this.http.get<any>( this.usersUrl )
         .pipe(map((res: Response) => res.json()));

@@ -38,11 +38,7 @@ export class TeachersComponent implements OnInit {
     this.submitDept = this.deptUrl;
   }
 
-  // "uid": null,
-  // "tid": "",
-  // "dept_name": null,
-  // "designation": "",
-  // "salary": null
+
 
   ngOnInit(): void {
     this.loading = true;
