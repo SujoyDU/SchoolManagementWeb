@@ -92,3 +92,12 @@ export class Teaches {
   studentList : StudentList[];
 }
 
+export class Takes {
+  url: string;
+  course_marks: string;
+  course_grade: string;
+  course_gpa: string;
+  course_status: string;
+  sid: string;
+  take_course: string;
+}

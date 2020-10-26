@@ -1,33 +1,27 @@
 <div class="card mt-4">
-  <h4 class="card-header">Welcome {{name}} . Teacher ID: {{tid}}</h4>
+  <h4 class="card-header">Welcome {{name}} . Student ID: {{sid}}</h4>
   <div class="card-body">
-    <h6>View Taught Sections</h6>
+    <h6>View Enrolled Sections</h6>
     <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
-    <ul *ngIf="teaches">
-      <li *ngFor="let subject of teaches">
-        <a routerLink="/teachers/{{subject.tid}}">
-          Teacher ID: {{subject.tid}}
+    <ul *ngIf="courseList">
+      <li *ngFor="let subject of courseList">
+        <a routerLink="/section/{{subject.take_course}}">
+          Section Name: {{subject.take_course}}
+          Marks: {{subject.course_marks ||  "N/A"}}
+          Grade: {{subject.course_grade ||  "N/A"}}
+          GPA: {{subject.course_gpa || "N/A"}}
         </a>
-        <a routerLink="/section/{{subject.teachcourse}}">
-          Course Taught: {{subject.teachcourse}}
-        </a>
-          <ul *ngIf="subject.studentList">
-            <h7>Enrolled Students</h7>
-            <li *ngFor="let student of subject.studentList">
-              Student ID: {{student.sid}}
-            </li>
-          </ul>
       </li>
     </ul>
   </div>
 
   <div style="width: 400px; margin: auto;">
     <form [formGroup]="teachesForm" (ngSubmit)="onSubmit()"  class="text-center border border-light p-5">
-      <p class="h4 mb-4">Select Section to teach</p>
+      <p class="h4 mb-4">Select Section to Enroll</p>
       <div class="form-group">
         <label for="section_id">Select Section:</label>
         <select class="form-control" formControlName="url" id="section_id">
-          <option *ngFor="let section of sections;" [value]="section.url">
+          <option *ngFor="let section of toEnroll;" [value]="section.url">
             {{section.sec_id}}
           </option>
         </select>
@@ -42,4 +36,7 @@
 
   </div>
 
+
+
 </div>
+

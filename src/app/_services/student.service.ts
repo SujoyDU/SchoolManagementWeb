@@ -15,7 +15,9 @@ export class StudentService {
               private messageService: MessageService) { }
 
 
-
+  public sendGetRequestbyId(id){
+    return this.http.get(this.studentUrl+id+'/');
+  }
   public sendGetRequest(){
     return this.http.get(this.studentUrl);
   }
