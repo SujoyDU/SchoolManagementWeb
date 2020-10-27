@@ -1,0 +1,21 @@
+<div class="card mt-4">
+  <h4 class="card-header">Welcome {{name}} . Teacher ID: {{tid}}</h4>
+  <div class="card-body">
+    <h6>View Taught Section Detail</h6>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <div *ngIf="teach">
+        <a routerLink="/teachers/{{teach.tid}}">
+          Teacher ID: {{teach.tid}}
+        </a>
+        <a routerLink="/section/{{teach.teachcourse}}">
+          Course Taught: {{teach.teachcourse}}
+        </a>
+        <ul *ngIf="teach.studentList">
+          <h7>Enrolled Students</h7>
+          <li *ngFor="let student of teach.studentList">
+            Student ID: {{student.sid}}
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>

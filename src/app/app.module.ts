@@ -25,7 +25,8 @@ import { TeachersDetailComponent } from './teachers-detail/teachers-detail.compo
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 import { StudentsDetailComponent } from './students-detail/students-detail.component';
 import { TakesComponent } from './takes/takes.component';
-import { TeachesDetailComponent } from './teaches-detail/teaches-detail.component';
+import { TeachesDetailComponent } from './teaches-detail/teaches-detail.component';;
+import { GiveexamComponent } from './giveexam/giveexam.component'
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { TeachesDetailComponent } from './teaches-detail/teaches-detail.componen
         StudentsDetailComponent ,
         TakesComponent,
         TeachesDetailComponent
-    ],
+,
+        GiveexamComponent    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
