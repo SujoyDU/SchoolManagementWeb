@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {MessageService} from '@app/_services/message.service';
+import {MessageService} from '../_services/message.service';
 import {map} from 'rxjs/operators';
 
 @Injectable({

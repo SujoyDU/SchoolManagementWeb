@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {LoggedInUser, Teacher} from '@app/_models';
-import {TeachersService} from '@app/_services/teachers.service';
+import {LoggedInUser, Teacher} from '../_models/user';
+import {TeachersService} from '../_services/teachers.service';
 import { Location } from '@angular/common';
-import {AuthenticationService} from '@app/_services';
+import {AuthenticationService} from '../_services/authentication.service';
 @Component({
   selector: 'app-teachers-detail',
   templateUrl: './teachers-detail.component.html',

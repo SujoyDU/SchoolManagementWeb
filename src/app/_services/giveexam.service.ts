@@ -6,23 +6,24 @@ import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ExamService {
-  private  examUrl = 'http://localhost:8000/api/exam/';
-
+export class GiveexamService {
+  private  giveexamUrl = 'http://localhost:8000/api/giveexam/';
   constructor(private http: HttpClient,
               private messageService: MessageService) { }
 
-
   public sendGetRequest(){
-    return this.http.get(this.examUrl);
+    return this.http.get(this.giveexamUrl);
+
   }
 
-  createExam(exam_name:string, teacher:string) {
-    return this.http.post<any>(this.examUrl, { exam_name,teacher})
+  createGiveExam(isFinished:string,stuexam:string, student:string) {
+    return this.http.post<any>(this.giveexamUrl, {isFinished, stuexam,student})
       .pipe(map(response => {
         console.log(response);
         return response;
       }));
 
   }
+
+
 }

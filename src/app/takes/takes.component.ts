@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService, UserService} from '@app/_services';
-import {DepartmentService} from '@app/_services/department.service';
+import {AuthenticationService} from '../_services/authentication.service';
+import {DepartmentService} from '../_services/department.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {TakesService} from '@app/_services/takes.service';
-import {LoggedInUser, Section, Takes} from '@app/_models';
-import {SectionService} from '@app/_services/section.service';
+import {TakesService} from '../_services/takes.service';
+import {LoggedInUser, Section, Takes} from '../_models/user';
+import {SectionService} from '../_services/section.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-takes',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LoggedInUser, NewUser} from '@app/_models';
-import {UserService,AuthenticationService} from '@app/_services';
-import {User} from '@app/_models';
+import {LoggedInUser, NewUser,User} from '../_models/user';
+import {UserService} from '../_services/user.service';
+import {AuthenticationService} from '../_services/authentication.service'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 

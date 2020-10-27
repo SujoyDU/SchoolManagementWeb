@@ -1,1 +1,39 @@
-<p>giveexam works!</p>
+<div class="card mt-4">
+  <h4 class="card-header">Welcome {{name}} . Student ID: {{sid}}</h4>
+  <div class="card-body">
+    <h6>View Exams</h6>
+
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="giveexams">
+      <li *ngFor="let giveexam of giveexams">
+        <a routerLink="/section/{{giveexam.section}}">
+          Section Name: {{giveexam.section}}
+          Finished: {{giveexam.isFinished}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button (click)="getExams()">Give A Exam</button>
+
+  <div style="width: 400px; margin: auto;">
+    <form [formGroup]="giveExamForm" (ngSubmit)="onSubmit()"  class="text-center border border-light p-5">
+      <p class="h4 mb-4">Select Exam to Give</p>
+      <div class="form-group" >
+        <label for="exam_id">Select Exam:</label>
+        <select class="form-control" formControlName="exam_url" id="exam_id">
+          <option *ngFor="let exam of exams;" [value]="exam.url">
+            Section: {{exam.section}} Exam Name: {{exam.exam_name}}
+          </option>
+        </select>
+      </div>
+      <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
+    </form>
+    <br>
+    <br>
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+
+  </div>
+
+</div>

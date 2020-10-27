@@ -108,3 +108,15 @@ export class Exam {
   exam_name: string;
   teacher:string;
 }
+
+export class GiveExam {
+  url:string;
+  isFinished:string;
+  stuexam:string;
+  student:string;
+}
+
+export class TakeSection {
+  take_course: string;
+  section: string;
+}

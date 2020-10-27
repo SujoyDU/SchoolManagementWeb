@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Department, LoggedInUser, User} from '@app/_models';
+import {Department, LoggedInUser, User} from '../_models/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthenticationService, UserService} from '@app/_services';
+import {AuthenticationService} from '../_services/authentication.service';
 import {HttpClient} from '@angular/common/http';
-import {DepartmentService} from '@app/_services/department.service';
+import {DepartmentService} from '../_services/department.service';
 
 @Component({
   selector: 'app-department',

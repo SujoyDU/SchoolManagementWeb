@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService, UserService} from '@app/_services';
-import {TeachersService} from '@app/_services/teachers.service';
-import {TeachesService} from '@app/_services/teaches.service';
+import {AuthenticationService} from '../_services/authentication.service';
+import {TeachesService} from '../_services/teaches.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Exam, LoggedInUser, Teaches} from '@app/_models';
-import {ExamService} from '@app/_services/exam.service';
+import {Exam, LoggedInUser, Teaches} from '../_models/user';
+import {ExamService} from '../_services/exam.service';
+import {UserService} from '../_services/user.service'
 
 @Component({
   selector: 'app-exam',
@@ -64,13 +64,14 @@ export class ExamComponent implements OnInit {
   getExam() {
     this.loading=false;
     this.examService.sendGetRequest().subscribe((data:any[]) => {
+      this.tid = data[0]['current_user'];
       data.forEach( d=> {
         if (d.exam_assigner == d.current_user) {
           d.teacher = decodeURI(d.teacher.split(this.teachesUrl)[1]).split('/')[0];
           this.exams.push(d);
         }
       })
-      this.tid = this.exams[0]['current_user'];
+
     })
     this.getTeaches();
 

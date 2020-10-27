@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Course, Department, LoggedInUser, User} from '@app/_models';
+import {Course, Department, LoggedInUser, User} from '../_models/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthenticationService, UserService} from '@app/_services';
+import {AuthenticationService} from '../_services/authentication.service';
 import {HttpClient} from '@angular/common/http';
-import {DepartmentService} from '@app/_services/department.service';
-import {CourseService} from '@app/_services/course.service';
+import {DepartmentService} from '../_services/department.service';
+import {CourseService} from '../_services/course.service';
 
 @Component({
   selector: 'app-department',

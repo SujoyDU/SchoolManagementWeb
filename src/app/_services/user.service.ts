@@ -1,11 +1,10 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { environment } from '@environments/environment';
-import { User, Department } from '@app/_models';
+import { environment } from '../../environments/environment';
 import {Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MessageService } from '@app/_services/message.service';
+import { MessageService } from '../_services/message.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {

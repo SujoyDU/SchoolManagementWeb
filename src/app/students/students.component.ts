@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {LoggedInUser, Student, Teacher} from '@app/_models';
+import {LoggedInUser, Student, Teacher} from '../_models/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {StudentService} from '@app/_services/student.service';
-import {AuthenticationService, UserService} from '@app/_services';
-import {DepartmentService} from '@app/_services/department.service';
+import {StudentService} from '../_services/student.service';
+import {AuthenticationService} from '../_services/authentication.service';
+import {UserService} from '../_services/user.service'
+import {DepartmentService} from '../_services/department.service';
 import {HttpClient} from '@angular/common/http';
 
 @Component({

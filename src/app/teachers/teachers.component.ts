@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Department, LoggedInUser, Teacher} from '@app/_models';
+import {Department, LoggedInUser, Teacher} from '../_models/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {TeachersService} from '@app/_services/teachers.service';
-import {AuthenticationService} from '@app/_services';
+import {TeachersService} from '../_services/teachers.service';
+import {AuthenticationService} from '../_services/authentication.service';
 import {HttpClient} from '@angular/common/http';
-import {UserService} from '@app/_services';
-import {DepartmentService} from '@app/_services/department.service';
+import {UserService} from '../_services/user.service';
+import {DepartmentService} from '../_services/department.service';
 
 @Component({
   selector: 'app-teachers',

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TeachersService} from '@app/_services/teachers.service';
 import {Location} from '@angular/common';
-import {AuthenticationService} from '@app/_services';
-import {LoggedInUser, Section} from '@app/_models';
-import {SectionService} from '@app/_services/section.service';
+import {AuthenticationService} from '../_services/authentication.service';
+import {LoggedInUser, Section} from '../_models/user';
+import {SectionService} from '../_services/section.service';
 
 @Component({
   selector: 'app-section-detail',

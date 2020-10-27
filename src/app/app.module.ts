@@ -3,15 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import {ErrorInterceptor} from './_helpers/error.interceptor';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import {UserComponent} from './user/user.component';
 import {DepartmentComponent} from './department/department.component';
 import {TeachersComponent} from './teachers/teachers.component';
@@ -25,7 +24,7 @@ import { TeachersDetailComponent } from './teachers-detail/teachers-detail.compo
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 import { StudentsDetailComponent } from './students-detail/students-detail.component';
 import { TakesComponent } from './takes/takes.component';
-import { TeachesDetailComponent } from './teaches-detail/teaches-detail.component';;
+import { TeachesDetailComponent } from './teaches-detail/teaches-detail.component';
 import { GiveexamComponent } from './giveexam/giveexam.component'
 
 @NgModule({
@@ -54,9 +53,9 @@ import { GiveexamComponent } from './giveexam/giveexam.component'
         SectionDetailComponent,
         StudentsDetailComponent ,
         TakesComponent,
-        TeachesDetailComponent
-,
-        GiveexamComponent    ],
+        TeachesDetailComponent,
+        GiveexamComponent
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

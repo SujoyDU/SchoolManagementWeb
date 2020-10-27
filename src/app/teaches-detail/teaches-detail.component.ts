@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TeachersService} from '@app/_services/teachers.service';
+
 import {Location} from '@angular/common';
-import {AuthenticationService} from '@app/_services';
-import {TeachesService} from '@app/_services/teaches.service';
-import {LoggedInUser, Teacher, Teaches} from '@app/_models';
+import {AuthenticationService} from '../_services/authentication.service';
+import {TeachesService} from '../_services/teaches.service';
+import {LoggedInUser, Teacher, Teaches} from '../_models/user';
 
 @Component({
   selector: 'app-teaches-detail',

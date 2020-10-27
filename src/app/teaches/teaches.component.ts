@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {LoggedInUser, Section, Teacher, Teaches, TeachesDetail, User} from '@app/_models';
-import {AuthenticationService, UserService} from '@app/_services';
+import {LoggedInUser, Section, Teacher, Teaches, TeachesDetail, User} from '../_models/user';
+import {AuthenticationService} from '../_services/authentication.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {TeachesService} from '@app/_services/teaches.service';
-import {TeachersService} from '@app/_services/teachers.service';
-import {SectionService} from '@app/_services/section.service';
+import {TeachesService} from '../_services/teaches.service';
+import {TeachersService} from '../_services/teachers.service';
+import {SectionService} from '../_services/section.service';
+import {UserService} from '../_services/user.service'
 
 @Component({
   selector: 'app-teaches',
