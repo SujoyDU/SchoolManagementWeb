@@ -87,6 +87,7 @@ export class TeachesDetail{
 }
 
 export class Teaches {
+  url:string;
   tid: string;
   teachcourse: string;
   studentList : StudentList[];
@@ -100,4 +101,10 @@ export class Takes {
   course_status: string;
   sid: string;
   take_course: string;
+}
+
+export class Exam {
+  url: string;
+  exam_name: string;
+  teacher:string;
 }

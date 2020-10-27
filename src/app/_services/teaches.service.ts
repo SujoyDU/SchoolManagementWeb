@@ -16,12 +16,16 @@ export class TeachesService {
   public sendGetRequest(){
     return this.http.get(this.teachesUrl);
   }
+
+  public sendGetRequestbyId(id){
+    return this.http.get(this.teachesUrl+id+'/');
+  }
+
   createTeaches(tid:string, teachcourse:string) {
     return this.http.post<any>(this.teachesUrl, { tid,teachcourse})
       .pipe(map(response => {
         console.log(response);
         return response;
       }));
-
   }
 }

@@ -24,7 +24,9 @@ import { MarkexamComponent } from './markexam/markexam.component';
 import { TeachersDetailComponent } from './teachers-detail/teachers-detail.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 import { StudentsDetailComponent } from './students-detail/students-detail.component';
-import { TakesComponent } from './takes/takes.component'
+import { TakesComponent } from './takes/takes.component';
+import { TeachesDetailComponent } from './teaches-detail/teaches-detail.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { TakesComponent } from './takes/takes.component'
         TeachersDetailComponent,
         SectionDetailComponent,
         StudentsDetailComponent ,
-        TakesComponent
+        TakesComponent,
+        TeachesDetailComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

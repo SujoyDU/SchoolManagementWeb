@@ -18,7 +18,7 @@ export class TeachesComponent implements OnInit {
   teaches: Teaches[];
   tid: string;
   teachesDetail:TeachesDetail[];
-  td:TeachesDetail;
+
   currentUser:LoggedInUser;
   teacher_name:string;
   name: string;

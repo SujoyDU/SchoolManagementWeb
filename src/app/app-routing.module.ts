@@ -14,6 +14,8 @@ import {TeachesComponent} from './teaches/teaches.component';
 import {TeachersDetailComponent} from '@app/teachers-detail/teachers-detail.component';
 import {SectionDetailComponent} from '@app/section-detail/section-detail.component';
 import {TakesComponent} from '@app/takes/takes.component';
+import {ExamComponent} from '@app/exam/exam.component';
+import {TeachesDetailComponent} from '@app/teaches-detail/teaches-detail.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -27,7 +29,9 @@ const routes: Routes = [
     { path: 'section', component: SectionComponent, canActivate: [AuthGuard]},
     { path: 'section/:id', component: SectionDetailComponent, canActivate: [AuthGuard]},
     { path: 'teaches', component: TeachesComponent, canActivate: [AuthGuard]},
+    {  path: 'teaches/:id', component: TeachesDetailComponent, canActivate: [AuthGuard]},
     { path: 'enrolled', component: TakesComponent, canActivate: [AuthGuard]},
+    {path: 'exam', component: ExamComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
