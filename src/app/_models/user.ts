@@ -120,3 +120,38 @@ export class TakeSection {
   take_course: string;
   section: string;
 }
+
+
+export class MarkExam{
+  url: string;
+  section: number;
+  exam_assigner: string;
+  stuexam: string;
+  student:string;
+}
+
+// "url": "http://localhost:8000/api/giveexam/2/",
+//   "exam_assigner": "8887766",
+//   "section": 3,
+//   "current_user": "web1@test.com",
+//   "isFinished": true,
+//   "stuexam": "http://localhost:8000/api/exam/2/",
+//   "student": "http://localhost:8000/api/takes/3/"
+
+export class Mark {
+  url: string;
+  section: number;
+  exam_assigner: string;
+  student_id: string;
+  current_user: string;
+  exam_marks: 81;
+  examobj: string;
+
+}
+// "url": "http://localhost:8000/api/markexam/2/",
+// "section": 3,
+// "exam_assigner": "8887766",
+// "student_id": "5556611",
+// "current_user": "8887722",
+// "exam_marks": 81,
+// "examobj": "http://localhost:8000/api/giveexam/2/"

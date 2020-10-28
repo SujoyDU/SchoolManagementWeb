@@ -17,6 +17,7 @@ import {TakesComponent} from './takes/takes.component';
 import {ExamComponent} from './exam/exam.component';
 import {TeachesDetailComponent} from './teaches-detail/teaches-detail.component';
 import {GiveexamComponent} from './giveexam/giveexam.component';
+import {GivemarksComponent} from './givemarks/givemarks.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -34,6 +35,7 @@ const routes: Routes = [
     { path: 'enrolled', component: TakesComponent, canActivate: [AuthGuard]},
     { path: 'exam', component: ExamComponent, canActivate: [AuthGuard]},
     { path: 'giveexam', component: GiveexamComponent, canActivate: [AuthGuard]},
+    { path: 'givemarks', component: GivemarksComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
